@@ -22,7 +22,7 @@ class MelonType:
 
     def add_pairing(self, pairing):
         """Add a food pairing to the instance's pairings list."""
-        self.pairings.append(pairing)
+        self.pairings.extend(pairing)
         print(f"Pairs well with {pairing}")
 
 
@@ -41,9 +41,24 @@ def make_melon_types():
 
     all_melon_types = []
 
-    # Fill in the rest
+  
+    Muskmelon = MelonType('musk', 1998, 'green', True, True, 'Muskmelon')
+    Casaba = MelonType('cas', 2003, 'green', False, False, 'Casaba')
+    Crenshaw = MelonType('cren', 1996, 'green', False, False, 'Crenshaw')
+    Yellow_Watermelon = MelonType('yw', 2013, 'yellow', False, True, 'Yellow Watermelon')
 
-    return all_melon_types
+    our_melons = [Muskmelon, Casaba, Crenshaw, Yellow_Watermelon]
+
+    for melon in our_melons:
+        all_melon_types.append(melon.name)
+
+    print(all_melon_types)
+print(make_melon_types())
+
+   # for melons in different_melons:
+   #     melon.add_pairing(pairing)
+
+    # return all_melon_types
 
 
 def print_pairing_info(melon_types):
