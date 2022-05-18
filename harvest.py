@@ -22,7 +22,10 @@ class MelonType:
 
     def add_pairing(self, pairing):
         """Add a food pairing to the instance's pairings list."""
-        self.pairings.extend(pairing)
+        if type(pairing) == str:
+            self.pairings.append(pairing)
+        else:
+            self.pairings.extend(pairing)    
         print(f"Pairs well with {pairing}")
 
 
@@ -40,32 +43,35 @@ def make_melon_types():
     """Returns a list of current melon types."""
 
     all_melon_types = []
-
   
-    Muskmelon = MelonType('musk', 1998, 'green', True, True, 'Muskmelon')
-    Casaba = MelonType('cas', 2003, 'green', False, False, 'Casaba')
-    Crenshaw = MelonType('cren', 1996, 'green', False, False, 'Crenshaw')
-    Yellow_Watermelon = MelonType('yw', 2013, 'yellow', False, True, 'Yellow Watermelon')
+    muskmelon = MelonType('musk', 1998, 'green', True, True, 'Muskmelon')
+    muskmelon.add_pairing('mint')
 
-    our_melons = [Muskmelon, Casaba, Crenshaw, Yellow_Watermelon]
+    casaba = MelonType('cas', 2003, 'green', False, False, 'Casaba')
+    casaba.add_pairing(['straberries', 'mint'])
+
+    crenshaw = MelonType('cren', 1996, 'green', False, False, 'Crenshaw')
+    crenshaw.add_pairing('prosciutto')
+    
+    yellow_Watermelon = MelonType('yw', 2013, 'yellow', False, True, 'Yellow Watermelon')
+    yellow_Watermelon.add_pairing('ice cream')
+
+    our_melons = [muskmelon, casaba, crenshaw, yellow_watermelon]
 
     for melon in our_melons:
-        all_melon_types.append(melon.name)
+        all_melon_types.append(melon)
 
-    print(all_melon_types)
-print(make_melon_types())
+    return all_melon_types
 
-   # for melons in different_melons:
-   #     melon.add_pairing(pairing)
-
-    # return all_melon_types
-
+# print(make_melon_types())
 
 def print_pairing_info(melon_types):
     """Prints information about each melon type's pairings."""
 
-    # Fill in the rest
+    for melon in melon_types:
+        print(f"{melon.name} pairs with - {melon.pairings[0]}")
 
+print(print_pairing_info(make_melon_types()))
 
 def make_melon_type_lookup(melon_types):
     """Takes a list of MelonTypes and returns a dictionary of melon type by code."""
