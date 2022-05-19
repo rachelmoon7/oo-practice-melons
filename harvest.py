@@ -63,6 +63,7 @@ def make_melon_types():
 
 print(make_melon_types())
 
+
 def print_pairing_info(melon_types):
     """Prints information about each melon type's pairings."""
 
@@ -72,6 +73,7 @@ def print_pairing_info(melon_types):
             print(f"- {pairing}")
 
 # print(print_pairing_info(make_melon_types()))
+
 
 def make_melon_type_lookup(melon_types):
     """Takes a list of MelonTypes and returns a dictionary of melon type by code."""
@@ -133,10 +135,11 @@ print(make_melons(make_melon_types))
 def get_sellability_report(melons):
     """Given a list of melon object, prints whether each one is sellable."""
     
+    #assign return value of function invoked to a variable rather than passing in function() directly
     ourmels = make_melons(make_melon_types())
 
     for melon in ourmels:
-        status = "(can be sold))"
+        status = None
         
         person = melon.harvested_by
         fieldnum = str(melon.field)
